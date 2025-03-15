@@ -5,7 +5,6 @@ component {
 		dbcreate="dropCreate"
 		,dialect="MicrosoftSQLServer"
 	} 
-	mssql = getDatasource();
 	this.datasources["LDEV_3907"] = server.getDatasource("mssql");
 	this.datasource = "LDEV_3907";
 }

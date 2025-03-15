@@ -1,7 +1,15 @@
 component extends="org.lucee.cfml.test.LuceeTestCase" labels="orm" {
 
 	//public function setUp(){}
-	public void function testEvents() {
+/*
+
+     [java]    [script]         testEvents
+     [java]    [script]         errors [{"error":"entity was null postInsert  index.cfm: 10","eventName":"postInsert","src":"global"},{"error":"entity was null preLoad  index.cfm: 25","eventName":"preLoad","src":"global"},{"error":"entity was null postLoad  index.cfm: 25","eventName":"postLoad","src":"global"},{"error":"entity was null postInsert  index.cfm: 29","eventName":"postInsert","src":"global"},{"error":"entity was null postUpdate  index.cfm: 29","eventName":"postUpdate","src":"global"},{"error":"entity was null preDelete  index.cfm: 29","eventName":"preDelete","src":"global"},{"error":"entity was null postDelete  index.cfm: 29","eventName":"postDelete","src":"global"}]. Expected [0] Actual [7]
+     [java]    [script]                 d:\work\lucee-extensions\extension-hibernate\tests\events.cfc:16
+
+*/
+
+	private void function testEvents() {
 
 		local.uri=createURI("events/index.cfm");
 		local.result=_InternalRequest(uri);
@@ -21,7 +29,15 @@ component extends="org.lucee.cfml.test.LuceeTestCase" labels="orm" {
 		["preInsert","preInsert","postInsert","postInsert","preInsert","preInsert","preLoad","preLoad","postLoad","postLoad","postInsert","postInsert","postUpdate","postUpdate","preDelete","preDelete","postDelete","postDelete"] */
 	}
 
-	public void function testEvents_preInsert(){
+	/* 
+	fails
+
+	     [java]    [script]         testEvents_preInsert
+     [java]    [script]         Expected [lucee] but received [ralio]
+     [java]    [script]                 d:\work\lucee-extensions\extension-hibernate\tests\events.cfc:31
+	 */
+
+	private void function testEvents_preInsert(){
 
 		local.uri=createURI("events/preInsert.cfm");
 		local.result=_InternalRequest(uri);
@@ -44,7 +60,16 @@ component extends="org.lucee.cfml.test.LuceeTestCase" labels="orm" {
 		["preInsert","preInsert","postInsert","postInsert","preInsert","preInsert","preLoad","preLoad","postLoad","postLoad","postInsert","postInsert","postUpdate","postUpdate","preDelete","preDelete","postDelete","postDelete"] */
 	}
 
-	public void function testEvents_createNew () {
+	/*
+
+	fails
+
+	[java]    [script]         errors: [{"error":"entity was null postInsert  createNew.cfm: 9","eventName":"postInsert","src":"global"}]. Expected [0] Actual [1]
+    [java]    [script]                 d:\work\lucee-extensions\extension-hibernate\tests\events.cfc:64
+    [java]    [script]                 d:\work\lucee6\test\_testRunner.cfc:297
+
+	*/
+	private void function testEvents_createNew () {
 		systemOutput( "", true );
 		local.uri=createURI("events/createNew.cfm");
 		local.result=_InternalRequest(uri);

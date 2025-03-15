@@ -2,7 +2,7 @@ component extends="org.lucee.cfml.test.LuceeTestCase" labels="orm" {
 
 	function run( testResults, testBox ) {
 		describe("ORM Savepoint Support",  function() {
-			it( title="can use transaction savepoint", skip="true"  body=function( currentSpec ) {
+			it( title="can use transaction savepoint", skip="true",  body=function( currentSpec ) {
                 local.uri=createURI("savepoints/index.cfm");
                 local.result=_InternalRequest(uri);
                 expect( result.status ).toBe( 200 );

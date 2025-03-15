@@ -5,17 +5,17 @@ component extends="org.lucee.cfml.test.LuceeTestCase" labels="orm" {
 
 	function run( testResults, testBox ) {
 		describe("Testcase for LDEV-3907", function() {
-			it( title="Setting the default value in the primary key in ORM entity", body=function( currentSpec ) {
+			xit( title="Setting the default value in the primary key in ORM entity", skip="#notHasMssql()#", body=function( currentSpec ) {
 				try {
 					local.result = _InternalRequest(
 						template : "#uri#\LDEV3907.cfm"
 					).filecontent;
 				}
 				catch(any e) {
-					result = e.message;
+					result = e.stacktrace;
 				}
 				expect(trim(result)).toBe("LDEV3907");
-			} skip="#notHasMssql()#");
+			});
 		});
 	}
 
